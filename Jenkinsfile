@@ -19,7 +19,7 @@ pipeline {
         stage('Sonarqube') {
     environment {
         scannerHome = tool 'sonarqube_scanner'
-        PROJECT_NAME = "sonar_jenkins-pipeline-as-code"
+        PROJECT_NAME = "sonar_jenkins-pipeline-as-develop"
     }
     steps {
         withSonarQubeEnv('sonarqube') {
