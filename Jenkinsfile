@@ -13,7 +13,6 @@ pipeline {
             steps {
                 sh "mvn clean install"
                 sh "mvn -B package"
-                
             }
         }
         stage('Sonarqube') {
@@ -26,6 +25,7 @@ pipeline {
             sh '''${scannerHome}/bin/sonar-scanner \
             -Dsonar.java.binaries=target/classes/com/mycompany/app \
             -Dsonar.projectKey=$PROJECT_NAME \
+            -Dsonar.sonar.branch.name=develop \
             -Dsonar.sources=.'''
         }
         timeout(time: 10, unit: 'MINUTES') {
