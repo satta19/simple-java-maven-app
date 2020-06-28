@@ -24,7 +24,7 @@ pipeline {
     steps {
         withSonarQubeEnv('sonarqube') {
             sh '''${scannerHome}/bin/sonar-scanner \
-            -Dsonar.java.binaries=build/classes/java/ \
+            -Dsonar.java.binaries=target/classes/com/mycompany/app \
             -Dsonar.projectKey=$PROJECT_NAME \
             -Dsonar.sources=.'''
         }
