@@ -1,11 +1,18 @@
 pipeline {
     agent any
-    
+        tools {
+        maven "Maven"
+    }
     stages {
         stage('Git Pull'){
             steps {
             checkout scm
         }
+        }
+        stage {
+            steps {
+                sh "mvn -B package"
+            }
         }
         stage('Sonarqube') {
     environment {
