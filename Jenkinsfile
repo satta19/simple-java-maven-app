@@ -3,9 +3,10 @@ pipeline {
     
     stages {
         stage('Git Pull'){
+            steps {
             checkout scm
         }
-        
+        }
         stage('Sonarqube') {
     environment {
         scannerHome = tool 'sonarqube_scanner'
