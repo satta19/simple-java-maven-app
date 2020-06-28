@@ -9,7 +9,7 @@ pipeline {
             checkout scm
         }
         }
-        stage {
+        stage('Maven Build'){
             steps {
                 sh "mvn -B package"
             }
