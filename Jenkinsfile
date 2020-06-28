@@ -24,10 +24,8 @@ pipeline {
         withSonarQubeEnv('sonarqube') {
             sh '''${scannerHome}/bin/sonar-scanner \
             -Dsonar.java.binaries=target/classes/com/mycompany/app \
-            -Dsonar.sonar.projectKey=project:testcustom \
             -Dsonar.projectKey=$SONAR_PROJECT_NAME \
-            -Dsonar.sonar.exclusions=pom.xml \
-            -Dsonar.sonar.sourceEncoding=UTF-8 \
+            -Dsonar.sourceEncoding=UTF-8 \
             -Dsonar.sources=.'''
         }
         timeout(time: 10, unit: 'MINUTES') {
