@@ -18,14 +18,14 @@ pipeline {
         stage('Sonarqube') {
     environment {
         scannerHome = tool 'sonarqube_scanner'
-        PROJECT_NAME = "sonar_jenkins-pipeline-as-develop"
+        SONAR_PROJECT_NAME = "sonar_jenkins-pipeline-as-develop"
     }
     steps {
         withSonarQubeEnv('sonarqube') {
             sh '''${scannerHome}/bin/sonar-scanner \
             -Dsonar.java.binaries=target/classes/com/mycompany/app \
-            -Dsonar.projectKey=$PROJECT_NAME \
-            -Dsonar.sonar.branch.name=develop \
+            -Dsonar.projectKey=$SONAR_PROJECT_NAME \
+            -Dsonar.sonar.sourceEncoding=UTF-8 \
             -Dsonar.sources=.'''
         }
         timeout(time: 10, unit: 'MINUTES') {
